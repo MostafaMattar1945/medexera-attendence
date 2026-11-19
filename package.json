@@ -1,0 +1,22 @@
+﻿{
+    "name":  "medexera-attendance-system",
+    "version":  "2.0.0",
+    "private":  true,
+    "description":  "Medexera Attendance System with Cloudflare Pages Functions and D1 Database Sync",
+    "scripts":  {
+                    "dev":  "wrangler pages dev public",
+                    "db:migrate:local":  "wrangler d1 migrations apply medexera-attendance-db --local",
+                    "db:migrate:remote":  "wrangler d1 migrations apply medexera-attendance-db --remote",
+                    "db:migrate:preview":  "wrangler d1 migrations apply DB --env preview --remote",
+                    "deploy":  "wrangler pages deploy public --project-name=medexera-attendance",
+                    "deploy:preview":  "wrangler pages deploy public --project-name=medexera-attendance --branch=preview",
+                    "test":  "node --test"
+                },
+    "devDependencies":  {
+                            "@cloudflare/workers-types":  "^4.20241022.0",
+                            "wrangler":  "^3.84.0"
+                        },
+    "dependencies":  {
+                         "@cloudflare/pages-plugin-cloudflare-access":  "^1.0.5"
+                     }
+}
